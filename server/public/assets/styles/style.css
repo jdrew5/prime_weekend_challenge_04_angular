@@ -1,0 +1,24 @@
+
+.parent {
+    margin-bottom: 5px;
+    padding: 10px;
+    color: #0A416B;
+    clear:both;
+}
+.left, .center, .right{
+    float:left;
+    width:20%;
+    padding:5px;
+    margin-left: 5px;
+}
+
+.center {
+    float:left;
+    width:60%;
+    padding:5px;
+
+}
+
+.parent:nth-child(odd){
+    background-color: rgb(245, 251, 255);
+}
