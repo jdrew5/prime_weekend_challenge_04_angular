@@ -67,7 +67,7 @@ app.post('/data', function(req,res){
 
 app.delete('/delete:id', function(req,res){
     pg.connect(connectionString, function (err, client) {
-        client.query("DELETE FROM messages WHERE message_id = $1", [req.body.id],
+        client.query("DELETE FROM messages WHERE message_id = $1", [req.params.id],
             function (err, result) {
                 if (err) {
                     console.log("Error deleting data: ", err);

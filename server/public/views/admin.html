@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="/vendors/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/styles/style.css">
 
-    <script type="text/javascript" src="/vendors/jquery.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
     <script type="text/javascript" src="/assets/scripts/admin.js"></script>
 </head>
-<body>
+    <body>
 
+        <h1>ADD MESSAGE!</h1>
+        <div class="container" ng-controller="MessageController">
+            <form id="addMessage">
+                <input ng-model = "message.userNameAdd" type="text" id="userNameAdd" name="userNameAdd" placeholder="Enter Name">
+                <input ng-model = "message.messageAdd" type="text" id="messageAdd" name="messageAdd" placeholder="Enter Message">
+            </form>
+            <button ng-click="clickButton(message)" id="submitAdd" class="btn btn-info">Submit Message</button>
 
-<h1>ADD MESSAGE!</h1>
-<form id="addMessage">
-    <input type="text" id="userNameAdd" name="userNameAdd" placeholder="Enter Name">
-    <input type="text" id="messageAdd" name="messageAdd" placeholder="Enter Message">
+            <div id="messageContainer"></div>
 
-    <button id="submitAdd" class="btn btn-info">Submit Message</button>
-</form>
+            <div ng-repeat="item in messageArray" class='parent row'>
+                <div class='left'>{{item.user_name}}</div>
+                <div class='center'>{{item.message}}</div>
+                <button class='delete btn btn-danger' ng-click = "clickDeleteButton(item)">Delete</button>
+            </div>
 
-<div id="messageContainer"></div>
-</body>
+        </div>
+    </body>
 </html>

@@ -1,25 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
     <head>
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" href="/vendors/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/styles/style.css">
 
-        <script type="text/javascript" src="/vendors/jquery.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular.min.js"></script>
         <script type="text/javascript" src="/assets/scripts/app.js"></script>
     </head>
     <body>
 
 
         <h1>ADD MESSAGE!</h1>
-        <form id="addMessage">
-            <input type="text" id="userNameAdd" name="userNameAdd" placeholder="Enter Name">
-            <input type="text" id="messageAdd" name="messageAdd" placeholder="Enter Message">
+        <div class="container" ng-controller="MessageController">
 
-            <button id="submitAdd" class="btn btn-info">Submit Message</button>
-        </form>
 
-        <div id="messageContainer"></div>
+            <form id="addMessage">
+                <input ng-model = "message.userNameAdd" type="text" id="userNameAdd" name="userNameAdd" placeholder="Enter Name">
+                <input ng-model = "message.messageAdd" type="text" id="messageAdd" name="messageAdd" placeholder="Enter Message">
+            </form>
+            <button ng-click="clickButton(message)" id="submitAdd" class="btn btn-info">Submit Message</button>
+
+            <div id="messageContainer"></div>
+
+            <div ng-repeat="item in messageArray" class='parent row'>
+                <div class='left'>{{item.user_name}}</div>
+                <div class='center'>{{item.message}}</div>
+            </div>
+
+        </div>
     </body>
 </html>
